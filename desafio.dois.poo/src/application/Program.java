@@ -5,27 +5,25 @@ import entities.Entry;
 import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		Locale.setDefault(Locale.US);
 
-		Category category1 = new Category(1, "Salário", "Reecebimento de salário");
+		Category category1 = new Category(1, "SalÃ¡rio", "Reecebimento de salÃ¡rio");
 		Category category2 = new Category();
 		category2.setId(2);
 		category2.setName("Pagamento");
 		category2.setDescription("Pagamento de Boletos");
 		
 
-		Entry entry1 = new Entry(1, "Salário na Empresa X", "Adiantamento quinzenal", "revenue", "4405.49", "15/12/2021",
+		Entry entry1 = new Entry(1, "SalÃ¡rio na Empresa X", "Adiantamento quinzenal", "revenue", "4405.49", "15/12/2021",
 				true, 1);
 
-		Entry entry2 = new Entry(0, null, null, null, null, null, false, 0);
+		Entry entry2 = new Entry();
 		entry2.setId(2);
-		entry2.setName("Salário da Empresa Y");
+		entry2.setName("SalÃ¡rio da Empresa Y");
 		entry2.setDescription("Pagamento mensal");
 		entry2.setType("revenue");
 		entry2.setAmount("4405.49");
