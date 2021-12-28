@@ -9,7 +9,9 @@ public class Entry {
 	private String date;
 	private boolean paid;
 	private long categoryId;
-
+	
+	public Entry(){
+	}
 
 	public Entry(long id, String name, String description, String type, String amount, String date, boolean paid,
 			long categoryId) {
