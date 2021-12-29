@@ -56,7 +56,7 @@ Programação Orientada a Objetos é um paradigma de desenvolvimento usado massi
 
 ---------------------------------------------------------------------------------------------------------
 
-# DESAFIO 2 - CONTROLLER
+# DESAFIO 3 - CONTROLLER
 
 ## a) Com suas palavras defina: (máx 5 linhas)
 ## I. O que é o protocolo de comunicação HTTP e como ele funciona;
