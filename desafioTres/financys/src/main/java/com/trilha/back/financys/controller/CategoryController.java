@@ -31,6 +31,7 @@ public class CategoryController {
 	@ApiOperation(value = "Return Category List")
 	public List <Category> read(){
 		return list;
+		
 	}
 	
 	
