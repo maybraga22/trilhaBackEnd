@@ -23,7 +23,7 @@ public class EntryController {
 
 	private List<Entry> list = new ArrayList<Entry>();
 
-	@PostMapping(" ")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ApiOperation(value = "Create Entry")
 	public int create(@RequestBody Entry entry) {
@@ -31,8 +31,8 @@ public class EntryController {
 		return list.indexOf(entry);
 	}
 
-	@GetMapping("/list")
-	@ResponseStatus(HttpStatus.FOUND)
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "Order Date List Entry")
 	public List<Entry> read() {
 		sortDates(list);

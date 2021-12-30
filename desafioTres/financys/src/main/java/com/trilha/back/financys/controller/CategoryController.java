@@ -15,11 +15,10 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/category")
 public class CategoryController {
 	
-
-
+	
 	private List<Category> list = new ArrayList<Category>();
 	
-	@PostMapping(" ")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ApiOperation(value = "Create Category List")
 	public int create (@RequestBody Category category){
@@ -27,12 +26,12 @@ public class CategoryController {
 		return list.indexOf(category);
 		} 	
 	
-	@ResponseStatus(HttpStatus.CREATED)
+	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "Return Category List")
-	@GetMapping("/list")
 	public List <Category> read(){
 		return list;
 	}
-
+	
 	
 }
