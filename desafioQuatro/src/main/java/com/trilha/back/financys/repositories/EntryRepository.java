@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.trilha.back.financys.entities.Entry;
 
 @Repository
-public interface EntryRepository extends JpaRepository<Entry, Long>{
+public interface EntryRepository extends JpaRepository<Entry, Long> {
 
 }

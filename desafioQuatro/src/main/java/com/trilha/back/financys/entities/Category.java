@@ -1,7 +1,5 @@
 package com.trilha.back.financys.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,14 +20,12 @@ import lombok.ToString;
 @EqualsAndHashCode
 
 @Entity
-public class Category implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
+public class Category {
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String description;
-	
-}
 
+}

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class EntryController {
 
 	@Autowired
 	private EntryRepository entryRepository;
-	
+
 	@Autowired
 	private CategoryRepository categoryRepository;
 
@@ -42,12 +43,12 @@ public class EntryController {
 	public Entry getEntryById(@PathVariable Long id) {
 		return entryRepository.findById(id).get();
 	}
-	
-	@PostMapping ("/createEntry/")
+
+	@PostMapping("/createEntry/")
 	@ApiOperation(value = "Create a Entry")
 	public ResponseEntity<Entry> entryCreate(@RequestBody Entry entry) {
 		Optional<Category> category = categoryRepository.findById(entry.getCategoryId());
-		if (category.isPresent()){
+		if (category.isPresent()) {
 			Entry entryCreate = entryRepository.save(entry);
 			return ResponseEntity.ok(entryCreate);
 		} else {
@@ -55,12 +56,12 @@ public class EntryController {
 		}
 	}
 
-
-	@PutMapping("/putEntry/{id}")
-	@ApiOperation(value = "Update the Entry by Id")
-	public Optional<Entry> updateEntry(@RequestBody Entry entry) {
+	@PutMapping("/putCategory/{id}")
+	@ApiOperation(value = "Update the Category")
+	public ResponseEntity<Entry> updateEmployee(@PathVariable("id") Long id, @RequestBody Entry entry) {
+		entry.setId(id);
 		entryRepository.save(entry);
-		return entryRepository.findById(entry.getId());
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 
 	@DeleteMapping("/deleteEntry/{id}")

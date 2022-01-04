@@ -11,16 +11,15 @@ public class FinancysApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FinancysApplication.class, args);
-		
+
 		Category category1 = new Category(1, "Salário", "Reecebimento de salário");
 		Category category2 = new Category();
 		category2.setId(2);
 		category2.setName("Pagamento");
 		category2.setDescription("Pagamento de Boletos");
-		
 
-		Entry entry1 = new Entry(1, "Salário na Empresa X", "Adiantamento quinzenal", "revenue", "4405.49", "15/12/2021",
-				true, 1);
+		Entry entry1 = new Entry(1, "Salário na Empresa X", "Adiantamento quinzenal", "revenue", "4405.49",
+				"15/12/2021", true, 1);
 
 		Entry entry2 = new Entry();
 		entry2.setId(2);
