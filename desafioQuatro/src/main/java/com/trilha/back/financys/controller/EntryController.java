@@ -68,4 +68,5 @@ public class EntryController {
 	public void deleteEntry(@PathVariable Long id) {
 		entryRepository.deleteById(id);
 	}
+	
 }
