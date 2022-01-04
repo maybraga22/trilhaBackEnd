@@ -2,6 +2,7 @@ package com.trilha.back.financys.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,20 @@ public class EntryController {
 		return entryRepository.findById(id);
 	}
 
+	@GetMapping("/entry/paid")
+	@ApiOperation(value = "Paid entries")
+	public List<Entry> getPaid(){
+		List<Entry> paidList = entryRepository.findAll();
+		return paidList.stream().filter(list1 -> list1.isPaid() == true).collect(Collectors.toList());
+	}
+	
+	@GetMapping("/entry/noPaid")
+	@ApiOperation(value = "Unpaid entries")
+	public List<Entry> getNoPaid(){
+		List<Entry> paidList = entryRepository.findAll();
+		return paidList.stream().filter(list1 -> list1.isPaid() == false).collect(Collectors.toList());
+	}
+	
 	@PostMapping("/createEntry/")
 	@ApiOperation(value = "Create a Entry")
 	public ResponseEntity<Entry> entryCreate(@RequestBody Entry entry) {
