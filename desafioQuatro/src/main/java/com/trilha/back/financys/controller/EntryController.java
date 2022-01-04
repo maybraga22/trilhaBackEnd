@@ -56,12 +56,18 @@ public class EntryController {
 		}
 	}
 
-	@PutMapping("/putCategory/{id}")
-	@ApiOperation(value = "Update the Category")
-	public ResponseEntity<Entry> updateEmployee(@PathVariable("id") Long id, @RequestBody Entry entry) {
-		entry.setId(id);
-		entryRepository.save(entry);
-		return ResponseEntity.status(HttpStatus.OK).build();
+	@PutMapping("/putEntry/{id}")
+	@ApiOperation(value = "Update the Entry")
+	public ResponseEntity<Entry> updateEntry(@PathVariable("id") Long id, @RequestBody Entry entry) {
+		Optional<Entry> entryData = entryRepository.findById(id);
+		if (entryData.isPresent()) {
+			Entry ent1 = entryData.get();
+			ent1.setName(entry.getName());
+			ent1.setDescription(entry.getDescription());
+			return new ResponseEntity<>(entryRepository.save(ent1), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@DeleteMapping("/deleteEntry/{id}")

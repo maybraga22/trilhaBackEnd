@@ -47,10 +47,16 @@ public class CategoryController {
 
 	@PutMapping("/putCategory/{id}")
 	@ApiOperation(value = "Update the Category")
-	public ResponseEntity<Category> updateEmployee(@PathVariable("id") Long id, @RequestBody Category category) {
-		category.setId(id);
-		categoryRepository.save(category);
-		return ResponseEntity.status(HttpStatus.OK).build();
+	public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category) {
+		Optional<Category> categoryData = categoryRepository.findById(id);
+		if (categoryData.isPresent()) {
+			Category cat1 = categoryData.get();
+			cat1.setName(category.getName());
+			cat1.setDescription(category.getDescription());
+			return new ResponseEntity<>(categoryRepository.save(cat1), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@DeleteMapping("/deleteCategory/{id}")
