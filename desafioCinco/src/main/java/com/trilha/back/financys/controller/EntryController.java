@@ -50,25 +50,27 @@ public class EntryController {
 
 	@GetMapping("/readEntry/{id}")
 	@ApiOperation(value = "Show the Entry by Id")
-	public Optional<Entry> EntryById(@PathVariable Long id) {
-		return entryService.findById(id);
+	public ResponseEntity<Entry> EntryById(@PathVariable Long id) {
+		Entry read = entryService.findById(id).get();
+		return ResponseEntity.ok(read);
 	}
 
 	@GetMapping("/paid")
 	@ApiOperation(value = "Paid entries")
-	public List<Entry> getPaid() {
+	public ResponseEntity<List<Entry>> getPaid() {
 		List<Entry> paidList = entryService.findAll();
-		return paidList.stream().filter(list1 -> list1.isPaid() == true).collect(Collectors.toList());
+		paidList.stream().filter(list1 -> list1.isPaid() == true).collect(Collectors.toList());
+		return ResponseEntity.ok(paidList);
 	}
 
 	@GetMapping("/unpaid")
 	@ApiOperation(value = "Unpaid entries")
-	public List<Entry> getNoPaid() {
-		List<Entry> paidList = entryService.findAll();
-		return paidList.stream().filter(list1 -> list1.isPaid() == false).collect(Collectors.toList());
+	public ResponseEntity<List<Entry>> getNoPaid() {
+		List<Entry> unpaidList = entryService.findAll();
+		unpaidList.stream().filter(list1 -> list1.isPaid() == false).collect(Collectors.toList());
+		return ResponseEntity.ok(unpaidList);
 	}
-	
-	
+
 	@PostMapping("/createEntry")
 	@ApiOperation(value = "Create a Entry")
 	public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
@@ -77,30 +79,19 @@ public class EntryController {
 			Entry saveEntry = entryRepository.save(entry);
 			return ResponseEntity.ok(saveEntry);
 		} else {
-			return ResponseEntity.notFound().build();		}
-	}
-	
-	/*
-	@PostMapping("/createEntry")
-	@ApiOperation(value = "Create a Entry")
-	public Entry entryCreate(@RequestBody Entry entry) {
-		boolean categoryExist = entryService.validateCategoryById(entry.getCategoryId());
-		if (categoryExist == false) {
-			System.out.println("Category not found!");
+			return ResponseEntity.notFound().build();
 		}
-		return entryRepository.save(entry);
 	}
-	*/
 
 	@PutMapping("/putEntry/{id}")
 	@ApiOperation(value = "Update the Entry")
 	public ResponseEntity<Entry> updateEntry(@PathVariable("id") Long id, @RequestBody Entry entry) {
 		Optional<Entry> entryData = entryService.findById(id);
 		if (entryData.isPresent()) {
-			Entry ent1 = entryData.get();
-			ent1.setName(entry.getName());
-			ent1.setDescription(entry.getDescription());
-			return new ResponseEntity<>(entryService.save(ent1), HttpStatus.OK);
+			Entry entry1 = entryData.get();
+			entry1.setName(entry.getName());
+			entry1.setDescription(entry.getDescription());
+			return new ResponseEntity<>(entryService.save(entry1), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -108,7 +99,8 @@ public class EntryController {
 
 	@DeleteMapping("/deleteEntry/{id}")
 	@ApiOperation(value = "Delete the Entry by Id")
-	public void deleteEntry(@PathVariable Long id) {
-		entryRepository.deleteById(id);
+	public ResponseEntity<?> deleteEntry(@PathVariable Long id) {
+		entryService.delete(id);
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trilha.back.financys.entities.Category;
-import com.trilha.back.financys.repositories.CategoryRepository;
 import com.trilha.back.financys.services.CategoryService;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,27 +25,26 @@ import io.swagger.annotations.ApiOperation;
 public class CategoryController {
 
 	@Autowired
-	private CategoryRepository categoryRepository;
-
-	@Autowired
 	private CategoryService categoryService;
 
 	@GetMapping
-	@ApiOperation(value = "Show all Categories")
-	public List<Category> getAllCategory() {
-		return categoryService.findAll();
+	public ResponseEntity<List<Category>> findAll() {
+		List<Category> list = categoryService.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 
-	@GetMapping("/readCategory/{id}")
-	@ApiOperation(value = "Show the category by Id")
-	public Optional<Category> CategoryById(@PathVariable Long id) {
-		return categoryService.findById(id);
+	@GetMapping("/readEntry/{id}")
+	@ApiOperation(value = "Show the Entry by Id")
+	public ResponseEntity<Category> EntryById(@PathVariable Long id) {
+		Category read = categoryService.findById(id).get();
+		return ResponseEntity.ok(read);
 	}
 
 	@PostMapping
 	@ApiOperation(value = "Create a Category")
-	public Category createCategory(@RequestBody Category category) {
-		return categoryService.save(category);
+	public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+		Category create = categoryService.save(category);
+		return ResponseEntity.ok(create);
 	}
 
 	@PutMapping("/putCategory/{id}")
@@ -54,10 +52,10 @@ public class CategoryController {
 	public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category) {
 		Optional<Category> categoryData = categoryService.findById(id);
 		if (categoryData.isPresent()) {
-			Category cat1 = categoryData.get();
-			cat1.setName(category.getName());
-			cat1.setDescription(category.getDescription());
-			return new ResponseEntity<>(categoryService.save(cat1), HttpStatus.OK);
+			Category category1 = categoryData.get();
+			category1.setName(category.getName());
+			category1.setDescription(category.getDescription());
+			return new ResponseEntity<>(categoryService.save(category1), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -65,7 +63,8 @@ public class CategoryController {
 
 	@DeleteMapping("/deleteCategory/{id}")
 	@ApiOperation(value = "Delete the Category by Id")
-	public void deleteCategory(@PathVariable Long id) {
-		categoryRepository.deleteById(id);
+	public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
+		categoryService.delete(id);
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }

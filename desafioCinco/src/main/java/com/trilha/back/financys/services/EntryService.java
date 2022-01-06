@@ -11,9 +11,6 @@ import com.trilha.back.financys.entities.Category;
 import com.trilha.back.financys.repositories.CategoryRepository;
 import com.trilha.back.financys.repositories.EntryRepository;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 @Service
 public class EntryService {
 
@@ -31,12 +28,16 @@ public class EntryService {
 		Optional<Category> category = categoryRepository.findById(id);
 		return category.isPresent();
 	}
-	
+
 	public Entry save(Entry entry) {
 		return entryRepository.save(entry);
 	}
 
 	public Optional<Entry> findById(Long id) {
 		return entryRepository.findById(id);
+	}
+
+	public void delete(Long id) {
+		entryRepository.deleteById(id);
 	}
 }
