@@ -1,6 +1,7 @@
 package com.trilha.back.financys.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.trilha.back.financys.dto.EntryDTO;
 import com.trilha.back.financys.entities.Entry;
 import com.trilha.back.financys.repositories.EntryRepository;
 import com.trilha.back.financys.services.CategoryService;
@@ -35,6 +37,12 @@ public class EntryController {
 
 	@Autowired
 	private EntryRepository entryRepository;
+	
+	@GetMapping("/readDTO")
+	public ResponseEntity<Map<Long, List<EntryDTO>>> showentryByCategory() {
+		Map<Long, List<EntryDTO>> entry = entryService.returnListDTO();
+		return ResponseEntity.ok(entry);
+	}
 
 	@GetMapping
 	public ResponseEntity<List<Entry>> findAll() {
