@@ -1,10 +1,12 @@
 package com.trilha.back.financys.services;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.ArrayList;
+//import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,23 +43,30 @@ public class EntryService {
 		Entry entry = modelMapper.map(entryDTO, Entry.class);
 		return entry;
 	}
-
-	public Map<Long, List<EntryDTO>> returnListDTOChart() {
-		List<Entry> listEntry = entryRepository.findAll();
-		Map<Long, List<EntryDTO>> entryByIdCategory = new HashMap<Long, List<EntryDTO>>();
-		EntryDTO entryDTO = new EntryDTO();
-		for (Entry entry : listEntry) {
-			Long key = entry.getCategoryId();
-			entryDTO = mapDto(entry);
-			if (entryByIdCategory.get(key) == null) {
-				entryByIdCategory.put(key, new ArrayList<EntryDTO>());
-			} else {
-				entryByIdCategory.get(key).add(entryDTO);
-			}
-		}
-		return entryByIdCategory;
+	
+	private List<EntryDTO> chartList = new ArrayList<EntryDTO>();
+	
+	public Map<Long, List<EntryDTO>> retornDTOList() {
+		entryRepository.findAll().stream().forEach(listDTO -> chartList.add(mapDto(listDTO)));
+		Map<Long, List<EntryDTO>> grouped = chartList.stream().collect(Collectors.groupingBy(EntryDTO::getCategoryId));
+		return grouped;
 	}
-
+	
+	public Map<Long, List<Entry>> listByCategory() {
+		List<Entry> list = entryRepository.findAll();
+		Map<Long, List<Entry>> listByCategory = list.stream().collect(Collectors.groupingBy(Entry::getCategoryId));
+		return listByCategory;
+	}
+	
+	/*
+	public List <EntryDTO> returnListDTO2(){
+		List<Entry> listEntry = entryRepository.findAll();
+		List<EntryDTO> listDTO = new ArrayList<EntryDTO>();
+	
+		listEntry.forEach(entry -> listDTO.stream()
+				.collect(Collectors.groupingBy(Entry::getName)));
+	} */
+		
 	public boolean validateCategoryById(long id) {
 		Optional<Category> category = categoryRepository.findById(id);
 		return category.isPresent();

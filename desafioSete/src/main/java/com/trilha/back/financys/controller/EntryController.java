@@ -37,13 +37,12 @@ public class EntryController {
 
 	@Autowired
 	private EntryRepository entryRepository;
-
+	
 	@GetMapping("/readDTO")
-	public ResponseEntity<Map<Long, List<EntryDTO>>> showentryByCategory() {
-		Map<Long, List<EntryDTO>> entry = entryService.returnListDTOChart();
-		return ResponseEntity.ok(entry);
+	public Map<Long, List<EntryDTO>> showEntryByCategory() {
+		return entryService.retornDTOList();
 	}
-
+	
 	@GetMapping
 	public ResponseEntity<List<Entry>> findAll() {
 		List<Entry> list = entryService.findAll();
