@@ -1,8 +1,5 @@
 package com.trilha.back.financys.services;
 
-import java.util.ArrayList;
-//import java.util.ArrayList;
-//import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -43,30 +40,17 @@ public class EntryService {
 		Entry entry = modelMapper.map(entryDTO, Entry.class);
 		return entry;
 	}
-	
-	private List<EntryDTO> chartList = new ArrayList<EntryDTO>();
-	
-	public Map<Long, List<EntryDTO>> retornDTOList() {
-		entryRepository.findAll().stream().forEach(listDTO -> chartList.add(mapDto(listDTO)));
-		Map<Long, List<EntryDTO>> grouped = chartList.stream().collect(Collectors.groupingBy(EntryDTO::getCategoryId));
+
+	public Map<Long, List<Object>> returnListDTO2() {
+		List<Entry> listEntry = entryRepository.findAll();
+
+		Map<Long, List<Object>> grouped = listEntry.stream()
+				.collect(Collectors.groupingBy(Entry::getCategoryId, 
+						Collectors.mapping(p -> mapDto(p), 
+						Collectors.toList())));
 		return grouped;
 	}
-	
-	public Map<Long, List<Entry>> listByCategory() {
-		List<Entry> list = entryRepository.findAll();
-		Map<Long, List<Entry>> listByCategory = list.stream().collect(Collectors.groupingBy(Entry::getCategoryId));
-		return listByCategory;
-	}
-	
-	/*
-	public List <EntryDTO> returnListDTO2(){
-		List<Entry> listEntry = entryRepository.findAll();
-		List<EntryDTO> listDTO = new ArrayList<EntryDTO>();
-	
-		listEntry.forEach(entry -> listDTO.stream()
-				.collect(Collectors.groupingBy(Entry::getName)));
-	} */
-		
+
 	public boolean validateCategoryById(long id) {
 		Optional<Category> category = categoryRepository.findById(id);
 		return category.isPresent();

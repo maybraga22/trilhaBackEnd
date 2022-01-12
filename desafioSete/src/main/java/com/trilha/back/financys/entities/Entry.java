@@ -3,8 +3,8 @@ package com.trilha.back.financys.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-//import javax.persistence.EnumType;
-//import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-//import com.trilha.back.financys.enums.TypeEnum;
+import com.trilha.back.financys.enums.TypeEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,16 +50,10 @@ public class Entry implements Serializable{
 	@Length(min = 15, max = 150)
 	private String description;
 	
-	/*
-	@NotBlank(message = "{description.not.empty}")
+	@NotNull(message = "{description.not.empty}")
     @Enumerated(value = EnumType.STRING)
     private TypeEnum type;
-	*/
-	
-	@NotBlank(message = "{type.not.empty}")
-	@Length(min = 3, max = 10)
-	private String type; 
-	
+		
 	@NotBlank(message = "{amount.not.empty}")
 	@Min(value = 0)
 	private String amount;

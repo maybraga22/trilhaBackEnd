@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trilha.back.financys.dto.EntryDTO;
 import com.trilha.back.financys.entities.Entry;
 import com.trilha.back.financys.repositories.EntryRepository;
 import com.trilha.back.financys.services.CategoryService;
@@ -37,12 +36,12 @@ public class EntryController {
 
 	@Autowired
 	private EntryRepository entryRepository;
-	
+
 	@GetMapping("/readDTO")
-	public Map<Long, List<EntryDTO>> showEntryByCategory() {
-		return entryService.retornDTOList();
+	public Map<Long, List<Object>> showEntryByCategory() {
+		return entryService.returnListDTO2();
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<List<Entry>> findAll() {
 		List<Entry> list = entryService.findAll();
