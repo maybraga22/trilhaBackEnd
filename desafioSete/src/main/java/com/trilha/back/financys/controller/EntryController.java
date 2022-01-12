@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,7 +81,7 @@ public class EntryController {
 
 	@PostMapping("/createEntry")
 	@ApiOperation(value = "Create a Entry")
-	public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
+	public ResponseEntity<Entry> createEntry(@Valid @RequestBody Entry entry) {
 		boolean categoryExist = entryService.validateCategoryById(entry.getCategoryId());
 		if (categoryExist == true) {
 			Entry saveEntry = entryRepository.save(entry);
@@ -91,7 +93,7 @@ public class EntryController {
 
 	@PutMapping("/putEntry/{id}")
 	@ApiOperation(value = "Update the Entry")
-	public ResponseEntity<Entry> updateEntry(@PathVariable("id") Long id, @RequestBody Entry entry) {
+	public ResponseEntity<Entry> updateEntry(@Valid @PathVariable("id") Long id, @RequestBody Entry entry) {
 		Optional<Entry> entryData = entryService.findById(id);
 		if (entryData.isPresent()) {
 			Entry entry1 = entryData.get();

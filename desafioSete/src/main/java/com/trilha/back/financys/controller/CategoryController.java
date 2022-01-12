@@ -3,6 +3,8 @@ package com.trilha.back.financys.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import com.trilha.back.financys.entities.Category;
 import com.trilha.back.financys.services.CategoryService;
 
 import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 @RequestMapping("/category")
@@ -43,14 +46,14 @@ public class CategoryController {
 
 	@PostMapping
 	@ApiOperation(value = "Create a Category")
-	public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+	public ResponseEntity<Category> createCategory(@Valid @RequestBody Category category) {
 		Category create = categoryService.save(category);
 		return ResponseEntity.ok(create);
 	}
 
 	@PutMapping("/putCategory/{id}")
 	@ApiOperation(value = "Update the Category")
-	public ResponseEntity<Category> updateCategory(@PathVariable("id") Long id, @RequestBody Category category) {
+	public ResponseEntity<Category> updateCategory(@Valid @PathVariable("id") Long id, @RequestBody Category category) {
 		Optional<Category> categoryData = categoryService.findById(id);
 		if (categoryData.isPresent()) {
 			Category category1 = categoryData.get();
