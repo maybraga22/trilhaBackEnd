@@ -7,9 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.trilha.back.application.ports.CategoryServicePort;
 import com.trilha.back.application.ports.EntryServicePort;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,11 +28,6 @@ import io.swagger.annotations.ApiOperation;
 public class EntryController {
 
 	private EntryServicePort entryServicePort;
-
-	/*
-	public EntryController(EntryServicePort entryServicePort) {
-		this.entryServicePort = entryServicePort;
-	} */
 
 	public EntryController(EntryServicePort entryServicePort) {
 		this.entryServicePort = entryServicePort;

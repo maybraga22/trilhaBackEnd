@@ -5,6 +5,7 @@ import com.trilha.back.adapters.outbound.entities.EntryEntity;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface EntryRepositoryPort {
     List<EntryEntity> findAll();
@@ -15,5 +16,6 @@ public interface EntryRepositoryPort {
     Map<Long, List<Object>> returnListDTO2();
     EntryDTO mapDto(EntryEntity entry);
     EntryEntity mapEntity(EntryDTO entryDTO);
+    Optional<EntryEntity> findById(Long id);
 }
 
