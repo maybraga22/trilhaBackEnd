@@ -11,7 +11,7 @@ public interface EntryServicePort {
 
     List<EntryEntity> findAll();
     EntryEntity save(EntryEntity entryEntity);
-    void delete(long id);
+    void delete(Long id);
     boolean validateCategoryById(long id);
     Integer calculaMedia(Integer x, Integer y);
     Map<Long, List<Object>> returnListDTO2();

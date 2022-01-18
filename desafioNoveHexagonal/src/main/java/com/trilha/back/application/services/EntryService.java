@@ -12,8 +12,9 @@ import com.trilha.back.adapters.outbound.entities.EntryEntity;
 import com.trilha.back.application.ports.EntryRepositoryPort;
 
 import com.trilha.back.adapters.inbound.dtos.EntryDTO;
+import com.trilha.back.application.ports.EntryServicePort;
 
-public class EntryService implements EntryServicePortPort {
+public class EntryService implements EntryServicePort {
 
 	private EntryRepositoryPort entryRepositoryPort;
 
@@ -24,7 +25,7 @@ public class EntryService implements EntryServicePortPort {
 	}
 
 	public List<EntryEntity> findAll() {
-		return EntryRepositoryPort.findAll();
+		return entryRepositoryPort.findAll();
 	}
 
 	public Integer calculaMedia(Integer x, Integer y) {
@@ -47,7 +48,7 @@ public class EntryService implements EntryServicePortPort {
 	}
 
 	public Map<Long, List<Object>> returnListDTO2() {
-		List<EntryEntity> listEntry = EntryRepositoryPort.findAll();
+		List<EntryEntity> listEntry = entryRepositoryPort.findAll();
 
 		Map<Long, List<Object>> grouped = listEntry.stream().collect(
 				Collectors.groupingBy(EntryEntity::getCategoryId, Collectors.mapping(p -> mapDto(p), Collectors.toList())));
@@ -55,7 +56,7 @@ public class EntryService implements EntryServicePortPort {
 	}
 
 	public boolean validateCategoryById(long id) {
-		Optional<CategoryEntity> category = EntryRepositoryPort.findById(id);
+		Optional<CategoryEntity> category = entryRepositoryPort.findById(id);
 		return category.isPresent();
 	}
 
@@ -65,6 +66,11 @@ public class EntryService implements EntryServicePortPort {
 
 	public Optional<EntryEntity> findById(Long id) {
 		return entryRepositoryPort.findById(id);
+	}
+
+	@Override
+	public Long idCategoryByName(String categoryName) {
+		return null;
 	}
 
 	public void delete(Long id) {

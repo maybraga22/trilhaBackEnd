@@ -16,7 +16,7 @@ public class MySQLEntryRepository implements EntryRepositoryPort {
 
     private EntryRepository entryRepository;
 
-    public MySQLEntryRepository(EntryRepository entryRepository){
+    public MySQLEntryRepository(EntryRepository entryRepository) {
         this.entryRepository = entryRepository;
     }
 
@@ -31,7 +31,7 @@ public class MySQLEntryRepository implements EntryRepositoryPort {
     }
 
     @Override
-    public void delete(long entryIid) {
+    public void deleteById(Long id) {
     }
 
     @Override
@@ -58,5 +58,6 @@ public class MySQLEntryRepository implements EntryRepositoryPort {
     public EntryEntity mapEntity(EntryDTO entryDTO) {
         return null;
     }
+}
 
 

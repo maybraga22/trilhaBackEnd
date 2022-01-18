@@ -9,7 +9,7 @@ import java.util.Map;
 public interface EntryRepositoryPort {
     List<EntryEntity> findAll();
     EntryEntity save(EntryEntity entryEntity);
-    void delete(long entryIid);
+    void deleteById(Long id);
     boolean validateCategoryById(long idCategory);
     Integer calculaMedia(Integer x, Integer y);
     Map<Long, List<Object>> returnListDTO2();
