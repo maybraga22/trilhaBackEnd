@@ -58,6 +58,11 @@ public class MySQLEntryRepository implements EntryRepositoryPort {
     public EntryEntity mapEntity(EntryDTO entryDTO) {
         return null;
     }
+
+	@Override
+	public Optional<EntryEntity> findById(Long id) {
+		return null;
+	}
 }
 
 

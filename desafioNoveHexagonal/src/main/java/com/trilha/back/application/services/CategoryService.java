@@ -2,9 +2,7 @@ package com.trilha.back.application.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.trilha.back.adapters.outbound.entities.CategoryEntity;
-
 import com.trilha.back.application.ports.CategoryRepositoryPort;
 
 
