@@ -11,4 +11,6 @@ public interface CategoryServicePort {
     void delete(Long id);
     List<CategoryEntity> findAll();
     Long idCategoryByName(String categoryName);
+	CategoryEntity findByName(String categoryName);
+	void deleteById(Long id);
 }
