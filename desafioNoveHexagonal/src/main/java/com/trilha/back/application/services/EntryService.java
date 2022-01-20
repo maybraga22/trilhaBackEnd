@@ -13,11 +13,15 @@ import com.trilha.back.application.ports.EntryRepositoryPort;
 
 import com.trilha.back.adapters.inbound.dtos.EntryDTO;
 import com.trilha.back.application.ports.EntryServicePort;
+import com.trilha.back.application.ports.CategoryRepositoryPort;
+
 
 public class EntryService implements EntryServicePort {
 
 	private EntryRepositoryPort entryRepositoryPort;
 
+	private CategoryRepositoryPort categoryRepositoryPort;
+	
 	private ModelMapperConfig modelMapper;
 
 	public EntryService(EntryRepositoryPort entryRepositoryPort) {
@@ -42,10 +46,11 @@ public class EntryService implements EntryServicePort {
 		return entryDTO;
 	}
 
+	
 	public EntryEntity mapEntity(EntryDTO entryDTO) {
 		EntryEntity entry = modelMapper.map(entryDTO, EntryEntity.class);
 		return entry;
-	}
+	} 
 
 	public Map<Long, List<Object>> returnListDTO2() {
 		List<EntryEntity> listEntry = entryRepositoryPort.findAll();
@@ -56,7 +61,7 @@ public class EntryService implements EntryServicePort {
 	}
 
 	public boolean validateCategoryById(long id) {
-		Optional<CategoryEntity> category = entryRepositoryPort.findById(id);
+		Optional<CategoryEntity> category = categoryRepositoryPort.findById(id);
 		return category.isPresent();
 	}
 
@@ -76,4 +81,5 @@ public class EntryService implements EntryServicePort {
 	public void delete(Long id) {
 		entryRepositoryPort.deleteById(id);
 	}
+
 }

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackageClasses = FinancysApplication.class)
 public class BeanConfig {
-
+	
     @Bean
     CategoryServicePort categoryService(CategoryRepositoryPort categoryRepositoryPort) {
         return new CategoryService(categoryRepositoryPort);
@@ -25,4 +25,5 @@ public class BeanConfig {
     EntryServicePort entryService(EntryRepositoryPort entryRepositoryPort) {
         return new EntryService(entryRepositoryPort);
     }
+
 }

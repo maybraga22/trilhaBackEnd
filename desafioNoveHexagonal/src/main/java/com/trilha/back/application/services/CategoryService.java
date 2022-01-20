@@ -2,13 +2,12 @@ package com.trilha.back.application.services;
 
 import java.util.List;
 import java.util.Optional;
-
 import com.trilha.back.adapters.outbound.entities.CategoryEntity;
-
 import com.trilha.back.application.ports.CategoryRepositoryPort;
+import com.trilha.back.application.ports.CategoryServicePort;
 
 
-public class CategoryService implements CategoryRepositoryPort {
+public class CategoryService implements CategoryServicePort {
 
 	private CategoryRepositoryPort categoryRepositoryPort;
 
