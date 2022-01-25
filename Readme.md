@@ -316,3 +316,66 @@ Validar que cada unidade de trabalho se comporta como projetada, esperada ou pre
 JUnit e Mockito.
 
 **Done! 😊**
+
+---------------------------------------------------------------------------------------------------------
+
+# DESAFIO 13 - INTEGRAÇÃO
+
+## CONFIGURAÇÃO
+
+![cConfiguracao](https://i.postimg.cc/xdfWW0xp/Imagem9.png)
+
+``` 
+C:\Users\mayro\OneDrive\Área de Trabalho\trilhaBackEnd\controle-financeiro>ng serve
+Your global Angular CLI version (13.1.4) is greater than your local version (11.0.2). The local Angular CLI version is used.
+
+To disable this warning use "ng config -g cli.warnings.versionMismatch false".
+- Generating browser application bundles...(node:47852) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+√ Browser application bundle generation complete.
+
+Initial Chunk Files                                                                | Names                                                                           |      Size
+vendor.js                                                                          | vendor                                                                          |   3.08 MB
+scripts.js                                                                         | scripts                                                                         | 667.48 kB
+styles.css, styles.js                                                              | styles                                                                          | 559.40 kB
+polyfills.js                                                                       | polyfills                                                                       | 467.41 kB
+main.js                                                                            | main                                                                            |  15.52 kB
+runtime.js                                                                         | runtime                                                                         |   9.27 kB
+
+                                                                                   | Initial Total                                                                   |   4.76 MB
+
+Lazy Chunk Files                                                                   | Names                                                                           |      Size
+default~pages-categorias-categorias-module~pages-lancamentos-lancamentos-module.js | default~pages-categorias-categorias-module~pages-lancamentos-lancamentos-module |   1.29 MB
+pages-lancamentos-lancamentos-module.js                                            | pages-lancamentos-lancamentos-module                                            | 125.25 kB
+pages-categorias-categorias-module.js                                              | pages-categorias-categorias-module                                              |  32.78 kB
+
+Build at: 2022-01-25T16:26:11.637Z - Hash: 51ea015210025736ad1c - Time: 19668ms
+
+Warning: C:\Users\mayro\OneDrive\Área de Trabalho\trilhaBackEnd\controle-financeiro\src\app\pages\lancamentos\lancamento-list\lancamento-list.component.ts depends on 'currency-formatter'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+
+√ Compiled successfully. 
+```
+
+## APLICAÇÃO
+
+### Listar:
+![Entry](https://i.postimg.cc/1Xr0hZYM/Imagem1.png)
+![Category](https://i.postimg.cc/bYx92QNb/Imagem2.png)
+
+### Criar:
+![Entry](https://i.postimg.cc/s2bb1pfq/Imagem5.png)
+![Category](https://i.postimg.cc/R0wNbLYL/Imagem3.png)
+
+### Editar:
+![Entry](https://i.postimg.cc/jjy4QNQG/Imagem6.png)
+![Category](https://i.postimg.cc/d14QzHjr/Imagem4.png)
+
+### Deletar:
+![Entry](https://i.postimg.cc/6pr8MhgL/Imagem8.png)
+![Category](https://i.postimg.cc/25xBSxx8/Imagem7.png)

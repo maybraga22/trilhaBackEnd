@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import com.trilha.back.financys.service.CategoryService;
 
 import io.swagger.annotations.ApiOperation;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -37,7 +38,7 @@ public class CategoryController {
 		return ResponseEntity.ok().body(list);
 	}
 
-	@GetMapping("/readEntry/{id}")
+	@GetMapping("/{id}")
 	@ApiOperation(value = "Show the Entry by Id")
 	public ResponseEntity<Category> EntryById(@PathVariable Long id) {
 		Category read = categoryService.findById(id).get();
@@ -51,7 +52,7 @@ public class CategoryController {
 		return ResponseEntity.ok(create);
 	}
 
-	@PutMapping("/putCategory/{id}")
+	@PutMapping("/{id}")
 	@ApiOperation(value = "Update the Category")
 	public ResponseEntity<Category> updateCategory(@Valid @PathVariable("id") Long id, @RequestBody Category category) {
 		Optional<Category> categoryData = categoryService.findById(id);
@@ -65,7 +66,7 @@ public class CategoryController {
 		}
 	}
 
-	@DeleteMapping("/deleteCategory/{id}")
+	@DeleteMapping("/{id}")
 	@ApiOperation(value = "Delete the Category by Id")
 	public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
 		categoryService.delete(id);

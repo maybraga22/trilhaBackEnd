@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ import com.trilha.back.financys.service.EntryService;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/entry")
 public class EntryController {
@@ -74,7 +76,7 @@ public class EntryController {
 		return ResponseEntity.ok(category);
 	}
 
-	@GetMapping("/readEntry/{id}")
+	@GetMapping("/{id}")
 	@ApiOperation(value = "Show the Entry by Id")
 	public ResponseEntity<Entry> EntryById(@PathVariable Long id) {
 		Entry read = entryService.findById(id).get();
@@ -109,7 +111,7 @@ public class EntryController {
 		}
 	}
 
-	@PutMapping("/putEntry/{id}")
+	@PutMapping("/{id}")
 	@ApiOperation(value = "Update the Entry")
 	public ResponseEntity<Entry> updateEntry(@Valid @PathVariable("id") Long id, @RequestBody Entry entry) {
 		Optional<Entry> entryData = entryService.findById(id);
@@ -123,7 +125,7 @@ public class EntryController {
 		}
 	}
 
-	@DeleteMapping("/deleteEntry/{id}")
+	@DeleteMapping("/{id}")
 	@ApiOperation(value = "Delete the Entry by Id")
 	public ResponseEntity<?> deleteEntry(@PathVariable Long id) {
 		entryService.delete(id);
