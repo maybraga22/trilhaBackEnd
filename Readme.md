@@ -379,3 +379,218 @@ For more info see: https://angular.io/guide/build#configuring-commonjs-dependenc
 ### Deletar:
 ![Entry](https://i.postimg.cc/6pr8MhgL/Imagem8.png)
 ![Category](https://i.postimg.cc/25xBSxx8/Imagem7.png)
+
+**Done! 😊**
+
+---------------------------------------------------------------------------------------------------------
+
+# DESAFIO FINAL
+
+## a) Desafio 1 - Git:
+### I. Dê 2 exemplos de situações onde é necessário utilizar merge:
+Quando queremos juntas os commits da branch com a main e também quando voce esta desenvolvento em equipe e precisa fazer a fusão das branches.
+
+### II. Com qual objetivo realizamos o commit?III. Qual a diferença entre:     
+* git add -all : coloca todos os arquivos no index/stage;    
+* git add  -u : coloca em stage apenas arquivos modificados e removidos;
+* git add -A : coloca em stage as mudanças no diretorio local;
+* git add . : coloca em stage todos os arquivosa novos ou modificados;
+
+### IV.  Qual  é  a  ordem  dos  comandos  para  subir  novas  atualizações,  verificando  se existem alterações a serem recebidas?
+git init > git status > git add . > git status > git commit -m "nome do commit" > git push -u origin main
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 1? Se não, justifique;
+Sim.
+
+## b) Desafio 2 - POO e Entity:
+### I. Qual é a finalidade da camada Entity?
+A finalidade da camada Entity é onde são criadas as classes com as caracteristicas dos objetos.
+
+### II. Para você, por que acha que seguimos a programação orientada a objetos?
+Porque a POO propõe uma representação mais facil de ser compreendida, a leitura, manutenção e também a reutilização de código.. Além das camadas que tornam a palicação mais segura.
+
+### III. Qual é o ideal por trás de utilizar os métodos getters e setters?
+os getters retornam um valor e os setters atribuem um valor, nos ajudando a encapsular e proteger as propriedades, facilitando o trabalho com o objeto.
+
+### IV. Qual o propósito de um construtor em uma classe? Podemos criar uma classe sem construtor?
+Os construtores são funções de iniciarmos uma classe, criando o objeto em memória. Os construtores são obrigatorios, caso não seja criado um construtor é criado um construtor vazio.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 2? Se não, justifique;
+Sim.
+
+## c) Desafio 3 - HTTP, REST e Controller:
+### I. Qual é o objetivo da camada Controller?
+A controller é a camada responsável por fazer a ponte entre as regras de negócio e front-end, facilitando a manutenção da aplicação.
+
+### II. No que os padrões REST nos auxiliam?
+Determinar como deve ser realizada a Transferência de Estado Representacional, essa transmissão de estados se dá a partir da especificação de parâmetros que podem ser aplicados a web services.
+
+### III. Quais métodos HTTP utilizamos para montar um CRUD?
+Create, Read, Update e Delete.
+
+### IV. Qual a diferença entre as annotations @PathVariable, @RequestParam, @RequestBody? E com quais métodos HTTP elas podem ser utilizadas respectivamente?
+* @PathVariable: é utilizado quando o valor da variável é passada diretamente na URL, mas não como um parametro que você passa após o sinal de interrogação mas sim quando o valor faz parte da url.
+* @RequestParam: faz o Spring mapear os parâmetros de requisição da requisição GET/POST para o seu argumento de método. 
+* @RequestBody: faz com que o Spring mapeie a solicitação inteira para uma classe de modelo e, a partir dela, você pode recuperar ou definir valores de seus métodos getter e setter.
+
+### V. Para que serve ResponseEntity?
+usamos o ResponseEntity quandoprecisamos ter mais controle sobre a resposta HTTP em um endpoint.
+
+### VI. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 3? Se não, justifique
+Sim.
+
+## d) Desafio 4 - JPA e Repository:
+### I. Qual é o propósito da camada Repository?
+É isolar os objetos do domínio do código que acessa o banco de dados, ele abstrai armazenamento e consulta de um ou mais entidades de domínio.
+
+### II. De maneira prática como funciona a injeção do Repository? E qual a sua relação com @Autowired?
+A injeção do repository funciona coma anotação @Autowired que conecta a classe a ser injetada.
+
+### III. Quais são as facilidades em utilizar JPA?
+* Indepêndencia, consultas de objetos, configuração simples, conversão de querys em objetos, cache de dados..
+
+### IV. Quais são os passos para configurar um banco de dados em um projeto Spring?
+Injetar as dependencias do banco de dados no maven do seu projeto e configurar a classe com login e senha do banco de dados no application.properties.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 4? Se não, justifique;
+Sim.
+
+## e) Desafio 5 - Service:
+### I. Qual é a finalidade da camada Service?
+O a camada service é onde são desenvolvidas as regras de negócio, onde fica toda a lógica da aplicação.
+
+### II. Qual o sentido de um método ter apenas um propósito?
+Pois a classe deve ter uma única tarefa ou ação para executar.
+
+### III. Qual a diferença entre um método void e métodos tipados?
+Um método é void quando ele não tem nenhum retorno, um metodo tipado é quando ele ter um retorno ai voce precisa especificar o que le vai retornar.
+
+### IV. É normal um serviço chamar outro?
+Sim, os services podem interagirem com outros services.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 5? Se não, justifique;
+Sim.
+
+## f) Desafio 6 - DTO:
+### I. Quais problemas conseguimos resolver utilizando a camada DTO?
+COm o DTO conseguimos apresnetar para os usuarios apenas o que queremos mostrar, conseguindo ocutar dados, assim reforçando a segurança.
+
+### II.  Qual  a  diferença  de  realizarmos  o  “de  para”  utilizando  constructor  ou  getters  e  setters?
+Os contrutores são iniciados quando a classe é instanciada, e os getter e setters são patra encapsular os dados.
+
+### III. No que a utilização do Mapper nos auxilia? Achou fácil a implementação?
+o modelmapper é um framework que realiza o mapeamento de modelos de forma simples, sim após aprender sobre o modelmapper foi facil a implementação.
+
+### IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 6? Se não, justifique;
+Sim.
+
+## g) Desafio 7 - Manipulação de dados:
+### I. Qual é a forma de validar os dados de uma requisição sem utilizar @Valid?
+Uma das formas é criando um ENUM, onde serão aceitos apenas os valores atribuidos na classe.
+
+### II. Para que serve um ENUM? Cite exemplos;
+Enum serve para validar os valores constantes pré-definidos. 
+Exemplo: public enum TypeEnum { REVENUE("revenue"), EXPENSE("expense");}
+
+### III. Como criamos um custom validator? E qual o objetivo de criar um?
+Injetar as dependencias configurações no maven do seu projeto, criar a anotação e a lógica, adicionar na classe que vai ser validada e adicionar o tratamento de exceções.   
+
+### IV. Qual foi a diferença entre utilizar for e streams no desafio 6? 
+O stream facilitou muito o desenvolvimento, e diminiu muito a quantidade de código, deixando mais limpo.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 7? Se não, justifique;
+Sim.
+
+## h) Desafio 8 - Tratamento de exceptions:
+### I. Qual a finalidade de trata-las?
+Quando se cria a aplicação pode acontecerem erros imprevistos durante sua execução, permitindo capturar exceções e tratá-las sem interromper o fluxo normal de execução do programa.
+
+### II. Como as descobrimos?
+Quando ocorre um erro é exibida uma mensagem no console.
+
+### III. Como fazemos para estourar um exception em uma determinada linha?
+fazendo o throws new
+
+### IV. Qual é a melhor forma de implementarmos nosso controle de exceções?
+Criando uma classe para exceção central  para aapi com a anotação na classe com  @Controlleadvice
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 8? Se não, justifique;
+Sim.
+
+## i) Desafio 9 - Patterns, SOLID e Arquitetura:
+### I. O que é Singleton Pattern?
+Singleton especifica que apenas uma instância da classe pode existir, e esta será utilizada por toda a aplicação. Dessa forma temos mais controle sobre o acesso às propriedades e métodos de uma classe, e também reduzimos o consumo de memória desnecessário por utilizar várias instancias desnecessárias de uma classe.
+
+### II. O que significa a letra D de SOLID e como se aplica na camada de Repository?
+D — Princípio da inversão da dependência, os módulos de alto nível não devem depender de módulos de baixo nível, ambos devem depender da abstração. 
+
+### III. Qual o objetivo das camadas?
+Separar o código em camadas torna os aplicativos mais fáceis de entender, testar e manter.
+
+### IV. Qual arquitetura é melhor DDD, Hexagonal ou Clean?
+Todas as arquiteturas tem suas vantagens, mas a proposta da Arquitetura Hexagonal é uma pouco mais alto nível, pelas questões de arquitetura e segurança.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 9? Se não, justifique;
+Sim.
+
+## j) Desafio 10 - Spring:
+### I. Qual a diferença entre Java e Spring?
+Java é uma linguagem de programação, enquanto Spring é uma estrutura de aplicativo de código aberto.
+
+### II. É possível utilizar Spring Data sozinho?
+Não, porque é preciso escolher com qual framework de persistencia ele vai se relacionar.
+
+### III. É possível utilizar Spring Boot, Spring Data e Spring Security em apenas um projeto? Se sim, como é feito a integração? 
+Sim, injetando as dependencias no maven do seu projeto e usuando as anotações nos metodos e nas classes.
+
+### IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 10? Se não, justifique;
+Sim.
+
+## k) Desafio 11 - Libs:
+### I. Cite 5 libs que utilizou durante a trilha e suas respectivas funcionalidades;
+* ModelMapper - trans formação de código;
+* Lombok - criação automatica de código;
+* Swagger - auxilia a descrição, consumo e visualização de serviços;
+* JUnit - Utilizado para testes;
+* Mockito - é instanciar classes e controlar o comportamento dos métodos;
+
+### II. Qual a diferença entre uma lib e um driver?
+LIB é um conjunto de funcionalidades que podem ser reaproveitadas pelos seus projetos e o Driver nada mais é do que uma classe cuja funcionalidade precisa ser disponibilizada para a aplicação. 
+
+### III. Existe limite de libs por projeto?
+Não. 
+
+### IV. Por que utilizar um gerenciador de dependências?
+Para que as configurações do projeto fiquem em um ponto central.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 11? Se não, justifique;
+Sim.
+
+## l) Desafio 12 - Testes unitários:
+### I. Por que DEVOPS exige uma porcentagem de cobertura mínima nos projetos?
+porque a metodologia devops compartilhar responsabilidade de segurança da aplicação, sendo assim a parte de desenvolvimentos e teste é imprescindível para a garantia de que o software esta em bom estado de funcionamento antes de subir a aplicação
+
+### II. Qual o objetivo de utilizar Mockito? Dê um exemplo;
+Seu principal objetivo é simular a instancia de classes e comportamento de métodos, simulando o método testado e suas dependências. 
+
+### III. O que é o Sonar? E qual é o seu papel?
+É uma plataforma de código aberto para inspeção contínua da qualidade do código, para executar revisões automáticas com análise estática do código para detectar bugs, odores de código e vulnerabilidades de segurança.
+
+### IV. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 12? Se não, justifique;
+Sim.
+
+## m) Desafio 13 - Integração:
+### I. Como foi o processo de integração?
+O processo de integração foi tranquilo, seguindo todas as orientações, fazendo apenas alguns ajustes nos end-points.
+
+### II. Quais foram as principais dificuldades?
+Tive um pouco de dificuldade com as configurações do angular, mas foi resolvido. 
+
+### III. Obteve algum erro de CORS?
+Sim.
+
+### IV. O que é CORS?
+É um mecanismo que permite que recursos restritos em uma página da web sejam recuperados por outro domínio fora do domínio ao qual pertence o recurso que será recuperado.
+
+### V. Você conseguiu adquirir os conhecimentos transmitidos durante o desafio 13? Se não, justifique;
+Sim.
